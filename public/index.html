@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cek Resi Mewah | Lacak Paket Anda</title>
+    <!-- Google Fonts: Outfit for a premium, modern look -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="background-effects">
+        <div class="glow-orb orb-1"></div>
+        <div class="glow-orb orb-2"></div>
+    </div>
+
+    <main class="container">
+        <header class="header">
+            <h1 class="logo"><i class="fa-solid fa-box-open"></i> Lacak<span>Paket</span></h1>
+            <p class="subtitle">Pantau perjalanan paket Anda dengan keanggunan sejati.</p>
+            <div class="author-badge">
+                <i class="fa-solid fa-user"></i> AUTHOR INDRALANA
+            </div>
+        </header>
+
+        <section class="search-section glass-panel">
+            <form id="trackForm" class="track-form">
+                <div class="input-group">
+                    <label for="courier"><i class="fa-solid fa-truck-fast"></i> Kurir</label>
+                    <div class="select-wrapper">
+                        <select id="courier" name="courier" required>
+                            <option value="" disabled selected>Pilih Kurir...</option>
+                            <option value="jne">JNE</option>
+                            <option value="jnt">J&T Express</option>
+                            <option value="sicepat">SiCepat</option>
+                            <option value="anteraja">AnterAja</option>
+                            <option value="pos">Pos Indonesia</option>
+                        </select>
+                        <i class="fa-solid fa-chevron-down select-icon"></i>
+                    </div>
+                </div>
+                <div class="input-group">
+                    <label for="awb"><i class="fa-solid fa-barcode"></i> Nomor Resi</label>
+                    <input type="text" id="awb" name="awb" placeholder="Masukkan nomor resi..." required autocomplete="off">
+                </div>
+                <button type="submit" class="btn-primary" id="submitBtn">
+                    <span class="btn-text">Lacak Sekarang</span>
+                    <i class="fa-solid fa-magnifying-glass btn-icon"></i>
+                    <div class="loader hidden"></div>
+                </button>
+            </form>
+        </section>
+
+        <section id="resultSection" class="result-section hidden">
+            <!-- Summary Info -->
+            <div class="summary-card glass-panel fade-in">
+                <div class="summary-header">
+                    <div class="status-badge success">
+                        <i class="fa-solid fa-check-circle"></i> <span id="resStatus">DELIVERED</span>
+                    </div>
+                    <div class="courier-badge" id="resCourier">JNE</div>
+                </div>
+                <div class="summary-details">
+                    <div class="detail-item">
+                        <span class="label">No. Resi</span>
+                        <strong class="value" id="resAwb">1234567890</strong>
+                    </div>
+                    <div class="detail-item">
+                        <span class="label">Pengirim</span>
+                        <strong class="value" id="resShipper">SleekStore Official</strong>
+                    </div>
+                    <div class="detail-item">
+                        <span class="label">Penerima</span>
+                        <strong class="value" id="resReceiver">Budi Santoso</strong>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Timeline -->
+            <div class="timeline-container glass-panel fade-in delay-1">
+                <h3 class="timeline-title"><i class="fa-solid fa-route"></i> Perjalanan Paket</h3>
+                <div class="timeline" id="timelineList">
+                    <!-- Timeline items injected here via JS -->
+                </div>
+            </div>
+        </section>
+        
+        <div id="errorState" class="error-state glass-panel hidden">
+            <i class="fa-solid fa-triangle-exclamation error-icon"></i>
+            <p id="errorMsg">Resi tidak ditemukan atau terjadi kesalahan server.</p>
+        </div>
+
+    </main>
+
+    <script src="app.js"></script>
+</body>
+</html>
